@@ -1,0 +1,848 @@
+/*------------------------------------------------
+
+CSS STRUCTURE:
+
+1. VARIABLES
+
+2. GENERAL TYPOGRAPHY
+  2.1 General Styles
+  2.2 Background Color
+  2.3 Section
+    - Section Paddings
+    - Section Margins
+    - Section Title
+    - Content width
+  2.4 Buttons
+    - Button Primary
+    - Button Seondary
+    - Button Light
+    - Button Effect
+
+
+3. CONTENT ELEMENTS
+  - Dropdown
+  - Breadcrumb
+  - Pagination
+  - Accordion
+  - Form
+  - Svg Color
+  - Swiper
+  - Modal Video
+
+4. SITE STRUCTURE
+  4.1 Header Section
+  4.2 Banner Section
+  4.3  About Section
+  4.4 Testimonial Section
+  4.5 FAQ Section
+  4.6 Projects Section
+
+5. PAGES STYLE
+  5.1 Project page 
+  5.2 Pricing page  
+  5.3 Reviews page
+
+  
+/*--------------------------------------------------------------
+/** 1. VARIABLES
+--------------------------------------------------------------*/
+:root {
+  --primary-color: #E54521;
+  --secondary-color: #05213C;
+  --black-color: #1F1F1F;
+  --light-black-color: #444444;
+  --dark-color: #313131;
+  --body-color: #797979;
+  --gray-color: #acabab;
+  --light-gray-color: #F6F6F6;
+  --light-color: #fdfdfd;
+
+  /* Bootstrap Theme Color  */
+  --bs-gray-100: #F6F6F6;
+  --bs-gray-300: #DCDCDC;
+  --bs-light-rgb: rgba(255, 255, 255, 1);
+  --bs-dark-rgb: 41, 41, 41;
+  --bs-primary-rgb: 178, 142, 113;
+}
+
+/* Fonts */
+:root {
+  --heading-font: "Roboto", sans-serif;
+  --body-font: "Roboto", sans-serif;
+}
+
+/*----------------------------------------------*/
+/* 2 GENERAL TYPOGRAPHY
+/*----------------------------------------------*/
+
+/* 2.1 General Styles
+/*----------------------------------------------*/
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--body-font);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 164%;
+  letter-spacing: 0.8px;
+  color: var(--body-color);
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: 0.3s ease-in-out;
+}
+
+a:hover {
+  color: var(--primary-color);
+}
+
+.text-light {
+  color: var(--light-color) !important;
+}
+
+.text-primary {
+  color: var(--primary-color) !important;
+}
+
+.text-black {
+  color: var(--black-color) !important;
+}
+
+/* 2.2 Background Color
+/*----------------------------------------------*/
+.bg-light {
+  background-color: var(--light-color) !important;
+}
+
+.bg-primary {
+  background-color: var(--primary-color) !important;
+}
+
+.bg-secondary {
+  background-color: var(--secondary-color) !important;
+}
+
+.bg-gray {
+  background-color: var(--bs-gray-100) !important;
+}
+
+/*--------------------------------------------------------------
+/** 2.3 Section
+--------------------------------------------------------------*/
+/* - Section Padding
+--------------------------------------------------------------*/
+.padding-small {
+  padding-top: 6em;
+  padding-bottom: 6em;
+}
+
+.padding-medium {
+  padding-top: 9em;
+  padding-bottom: 9em;
+}
+
+.padding-large {
+  padding-top: 12em;
+  padding-bottom: 12em;
+}
+
+@media (max-width: 999px) {
+  .padding-medium {
+    padding-top: 6em;
+    padding-bottom: 6em;
+  }
+}
+
+/* - Section Margin
+--------------------------------------------------------------*/
+.margin-small {
+  margin-top: 3em;
+  margin-bottom: 3em;
+}
+
+.margin-medium {
+  margin-top: 8em;
+  margin-bottom: 8em;
+}
+
+.margin-large {
+  margin-top: 12em;
+  margin-bottom: 12em;
+}
+
+
+
+/* - Section Title
+--------------------------------------------------------------*/
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--black-color);
+  font-family: var(--heading-font);
+  text-transform: uppercase;
+  font-style: italic;
+  font-weight: 700;
+}
+
+h5,
+h6 {
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: capitalize;
+}
+
+
+/* - Content width
+--------------------------------------------------------------*/
+.container-xxl {
+  max-width: 1750px;
+}
+
+
+/* Animation */
+@media (min-width: 200px) {
+  .animate {
+    animation-duration: 0.3s;
+    -webkit-animation-duration: 0.3s;
+    animation-fill-mode: both;
+    -webkit-animation-fill-mode: both;
+  }
+}
+
+/* Animate Slide */
+@keyframes slide {
+  0% {
+    transform: translateY(1rem);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0rem);
+    opacity: 1;
+  }
+
+  0% {
+    transform: translateY(1rem);
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes slide {
+  0% {
+    -webkit-transform: transform;
+    -webkit-opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: translateY(0);
+    -webkit-opacity: 1;
+  }
+
+  0% {
+    -webkit-transform: translateY(1rem);
+    -webkit-opacity: 0;
+  }
+}
+
+.slide {
+  -webkit-animation-name: slide;
+  animation-name: slide;
+}
+
+/*--------------------------------------------------------------
+/** 2.4 Buttons
+--------------------------------------------------------------*/
+.btn {
+  --bs-btn-padding-x: 2.5rem;
+  --bs-btn-padding-y: 1rem;
+  --bs-btn-font-size: 1rem;
+  --bs-btn-font-weight: 400;
+  text-transform: uppercase;
+  border-radius: 60px;
+  letter-spacing: 0.1rem;
+  transition: all 0.4s ease-in-out;
+}
+
+.btn-primary {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: var(--primary-color);
+  --bs-btn-border-color: var(--primary-color);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #f3960a;
+  --bs-btn-hover-border-color: #f3960a;
+  --bs-btn-focus-shadow-rgb: 49, 132, 253;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #f3960a;
+  --bs-btn-active-border-color: #f3960a;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-disabled-bg: #f3960a;
+  --bs-btn-disabled-border-color: #f3960a;
+}
+
+.btn-secondary {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: #999EA4;
+  --bs-btn-border-color: #999EA4;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #818991;
+  --bs-btn-hover-border-color: #818991;
+  --bs-btn-focus-shadow-rgb: 130, 138, 145;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #818991;
+  --bs-btn-active-border-color: #818991;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-disabled-bg: #999EA4;
+  --bs-btn-disabled-border-color: #999EA4;
+}
+
+.btn-light {
+  --bs-btn-color: #000;
+  --bs-btn-bg: #f8f9fa;
+  --bs-btn-border-color: #f8f9fa;
+  --bs-btn-hover-color: #000;
+  --bs-btn-hover-bg: #ebebeb;
+  --bs-btn-hover-border-color: #ebebeb;
+  --bs-btn-focus-shadow-rgb: 211, 212, 213;
+  --bs-btn-active-color: #000;
+  --bs-btn-active-bg: #ebebeb;
+  --bs-btn-active-border-color: #ebebeb;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #000;
+  --bs-btn-disabled-bg: #f8f9fa;
+  --bs-btn-disabled-border-color: #f8f9fa;
+}
+
+
+/* button effect */
+.button {
+  position: relative;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: var(--primary-color);
+  border: none;
+  color: white;
+  cursor: pointer;
+  outline: none;
+  overflow: hidden;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+.button:hover {
+  color: white;
+  background: var(--primary-color);
+}
+
+.button span {
+  position: relative;
+  pointer-events: none;
+}
+/* #ff7315 */
+.button::before {
+  --size: 0;
+  content: '';
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: var(--size);
+  height: var(--size);
+  background: radial-gradient(circle closest-side, #f76606, transparent);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  transition: width .2s ease, height .2s ease;
+}
+
+.button:hover::before {
+  --size: 400px;
+}
+
+/*--------------------------------------------------------------
+/** 3.CONTENT ELEMENTS
+--------------------------------------------------------------*/
+
+/* Dropdown
+------------------------------------------------------------- */
+.dropdown-item {
+  color: var(--dark-color);
+}
+
+.dropdown-item.active,
+.dropdown-item:hover,
+.dropdown-item:active {
+  color: var(--dark-color);
+  background-color: var(--bs-gray-300);
+}
+
+/* Breadcrumb
+------------------------------------------------------------- */
+.breadcrumb-item+.breadcrumb-item::before {
+  color: var(--bs-light);
+  position: relative;
+}
+
+
+/* Pagination
+------------------------------------------------------------- */
+.pagination {
+  --bs-pagination-color: var(--black-color);
+  --bs-pagination-hover-color: #fff;
+  --bs-pagination-hover-bg: var(--primary-color);
+  --bs-pagination-hover-border-color: var(--primary-color);
+  --bs-pagination-focus-color: #fff;
+  --bs-pagination-focus-bg: var(--primary-color);
+  --bs-pagination-focus-box-shadow: none;
+  --bs-pagination-active-bg: var(--primary-color);
+  --bs-pagination-active-border-color: var(--primary-color);
+}
+
+
+/* Accordion
+------------------------------------------------------------- */
+.accordion {
+  --bs-accordion-btn-icon: url('https://api.iconify.design/ion/caret-down.svg?color=%343536&width=30');
+  --bs-accordion-btn-active-icon: url('https://api.iconify.design/ion/caret-down.svg?color=%343536&width=30');
+  --bs-accordion-border-radius: 0px;
+}
+
+.accordion-item {
+  color: inherit;
+  box-shadow: 1px 3px 3px 1px rgba(121, 121, 121, 0.096);
+  border: none;
+}
+
+.accordion-button:focus {
+  box-shadow: none;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+/* Form
+------------------------------------------------------------- */
+.form-check-input:checked {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  box-shadow: none;
+}
+
+.form-check-input:focus {
+  border-color: var(--primary-color);
+  outline: 0;
+  box-shadow: none;
+}
+
+.form-control {
+  box-shadow: 1px 3px 3px 1px rgba(121, 121, 121, 0.096);
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--dark-color);
+  outline: 0;
+  box-shadow: 1px 3px 3px 1px rgba(121, 121, 121, 0.096);
+}
+
+input,
+select,
+textarea {
+  border-color: var(--dark-color);
+  outline: 0;
+  box-shadow: none;
+}
+
+select:focus {
+  box-shadow: none;
+}
+
+/* Svg Color
+------------------------------------------------------------- */
+svg.light-color {
+  color: var(--light-color);
+}
+
+svg.gray-color {
+  color: var(--gray-color);
+}
+
+svg.dark-color {
+  color: var(--dark-color);
+}
+
+svg.primary-color {
+  color: var(--primary-color);
+}
+
+svg.social {
+  color: #C9C9C9;
+  transition: all 0.5s ease-in-out;
+}
+
+svg.social:hover {
+  color: var(--primary-color);
+}
+
+
+/* Swiper
+------------------------------------------------------------- */
+.swiper-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet,
+.swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {
+  margin: 0 8px;
+}
+
+.slider-pagination .swiper-pagination-bullet {
+  width: 15px;
+  height: 15px;
+  background: #FFFFFF;
+}
+
+.slider-pagination .swiper-pagination-bullet-active {
+  background: var(--primary-color);
+}
+
+.main-slider-button-next.swiper-button-disabled,
+.main-slider-button-prev.swiper-button-disabled {
+  opacity: .35;
+  cursor: auto;
+  pointer-events: none;
+}
+
+
+/* modal video override
+------------------------------------------------------------- */
+.modal-dialog {
+  max-width: 800px;
+  margin: auto;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.modal-content {
+  padding: 0;
+  background-color: #f5f3ef;
+  border: none;
+  border-radius: 0
+}
+
+/*----------------------------------------------*/
+/* 4 SITE STRUCTURE */
+/*----------------------------------------------*/
+
+/* 4.1 Header Section
+/*----------------------------------------------*/
+
+#header {
+  width: -webkit-fill-available;
+}
+
+li.nav-item {
+  padding: 0px 29px;
+}
+
+a.nav-link {
+  color: #7F8892;
+  text-transform: uppercase;
+}
+
+a.nav-link:focus {
+  color: var(--light-black-color);
+}
+
+a.nav-link.active,
+a.nav-link:hover {
+  color: var(--primary-color) !important;
+  outline: none;
+}
+
+#primary-header .dropdown .search::after {
+  content: none;
+}
+
+#primary-header .search-dropdown .dropdown-menu {
+  width: 260px;
+}
+
+#primary-header .search-dropdown .dropdown-menu input {
+  min-width: 100%;
+}
+
+#primary-header .search-dropdown .dropdown-menu button {
+  padding: 0 12px;
+  min-height: -webkit-fill-available;
+  border-radius: 0.25rem;
+}
+
+@media (max-width: 999px) {
+  a.nav-link {
+    font-size: 25px;
+    padding: 8px 0 8px 0 !important;
+  }
+
+  li.nav-item {
+    border: 0px !important;
+  }
+/* Menu mobile menor */
+  #bdNavbar {
+    --bs-offcanvas-width: 260px;
+  }
+}
+@media (max-width: 1399px) {
+  li.nav-item {
+    padding: 0px 22px;
+  }
+}
+
+
+/* 4.2 Banner Section
+/*----------------------------------------------*/
+
+#banner {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#myVideo {
+  position: absolute;
+  width: auto;
+  height: auto;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.banner-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.banner-topic,
+.banner-title {
+  text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.60);
+}
+
+@media (max-width: 580px) {
+  .banner-content {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+  }
+
+}
+
+@media screen and (min-width: 580px) {
+  .banner-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* 4.3 About Section
+/*----------------------------------------------*/
+svg.play-icon {
+  animation: play 1.5s alternate infinite ease-in;
+}
+
+@keyframes play {
+  0% {
+    transform: scale(.8);
+  }
+
+  100% {
+    transform: scale(1.1);
+  }
+
+}
+
+
+/* 4.4 Testimonial Section
+/*----------------------------------------------*/
+
+@media (max-width: 1200px) {
+  #testimonial {
+    background-color: var(--light-gray-color);
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  #testimonial {
+    background-image: url(images/testimonial-bg.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 115vh;
+    background-position: center;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.avatar {
+  width: 60px;
+  height: 60px;
+  background: #f76606;
+  color: #fff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  font-size: 28px; /* aumenta a letra */
+  font-weight: bold;
+}
+
+
+/* 4.5 FAQ Section
+/*----------------------------------------------*/
+
+@media (max-width: 1200px) {
+  #faq {
+    background-color: var(--light-gray-color);
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  #faq {
+    background-image: url(images/faq-bg.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    background-position: center;
+  }
+}
+
+
+
+/* 4.6 Projects Section
+/*----------------------------------------------*/
+
+.project-content .project-img {
+  transition: all 0.5s ease-in-out;
+}
+
+.project-content:hover .project-img {
+  opacity: 0.3;
+}
+
+.project-description {
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+}
+
+.project-content:hover .project-description {
+  opacity: 1;
+}
+
+/* 4.6 Booking Section
+/*----------------------------------------------*/
+
+.booking{
+  background-position: center;
+  display: flex;
+  align-items: center;
+}
+
+/*----------------------------------------------*/
+/* 5 PAGES STYLE */
+/*----------------------------------------------*/
+
+/*--------------------------------------------------------------
+5.1 Project page 
+--------------------------------------------------------------*/
+
+button.filter-button {
+  border: 0;
+  border-radius: 20px;
+  background: transparent;
+  text-transform: uppercase;
+  color: var(--black-color);
+  transition: all 0.3s ease-in-out;
+}
+
+button.filter-button.active,
+button.filter-button:hover {
+  color: var(--bs-light);
+  background: var(--primary-color);
+}
+
+/*--------------------------------------------------------------
+ 5.2 Pricing page 
+  --------------------------------------------------------------*/
+.plan-post {
+  border: 1px solid var(--primary-color);
+}
+
+span.price-tick {
+  color: var(--primary-color);
+}
+
+.price-option {
+  height: 320px;
+}
+
+
+/*--------------------------------------------------------------
+ 5.3 Reviews page
+--------------------------------------------------------------*/
+
+.reviews-components {
+  box-shadow: 0px 12px 90px rgba(12, 12, 12, 0.06);
+}
+
+iconify-icon.quote {
+  font-size: 60px;
+  color: var(--primary-color);
+}
+
+.rate {
+  color: var(--primary-color);
+}
+
+/*--------------------------------------------------------------
+ 6 extras
+--------------------------------------------------------------*/
+.whatsapp-float{
+  position:fixed;
+  width:60px;
+  height:60px;
+  bottom:20px;
+  right:20px;
+  background:#25D366;
+  color:#fff;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:999;
+}
+
+html {
+  scroll-behavior: smooth;
+}
