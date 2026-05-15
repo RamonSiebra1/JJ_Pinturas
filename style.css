@@ -47,7 +47,7 @@ CSS STRUCTURE:
 /** 1. VARIABLES
 --------------------------------------------------------------*/
 :root {
-  --primary-color: #E54521;
+  --primary-color: #e8de1e;
   --secondary-color: #05213C;
   --black-color: #1F1F1F;
   --light-black-color: #444444;
@@ -705,7 +705,7 @@ svg.play-icon {
 .avatar {
   width: 60px;
   height: 60px;
-  background: #f76606;
+  background: var(--primary-color);
   color: #fff;
 
   display: flex;
