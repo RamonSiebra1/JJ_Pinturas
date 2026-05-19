@@ -37,10 +37,7 @@ CSS STRUCTURE:
   4.5 FAQ Section
   4.6 Projects Section
 
-5. PAGES STYLE
-  5.1 Project page 
-  5.2 Pricing page  
-  5.3 Reviews page
+5. EXTRAS
 
   
 /*--------------------------------------------------------------
@@ -665,17 +662,20 @@ a.nav-link:hover {
 }
 
 .banner-bg {
-  background-image: url(images/new_bg3.png);
+  background-image: url(images/new_bg4.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   height: 100vh;
 }
 
-@media (max-width: 768px) {
+
+
+
+@media (max-width: 728px) {
 
   #banner .banner-bg {
-    background-position: 10% center;
+    background-position: 2% center;
   }
 
   #banner .text-center {
@@ -803,64 +803,11 @@ svg.play-icon {
   align-items: center;
 }
 
-/*----------------------------------------------*/
-/* 5 PAGES STYLE */
-/*----------------------------------------------*/
 
-/*--------------------------------------------------------------
-5.1 Project page 
---------------------------------------------------------------*/
-
-button.filter-button {
-  border: 0;
-  border-radius: 20px;
-  background: transparent;
-  text-transform: uppercase;
-  color: var(--black-color);
-  transition: all 0.3s ease-in-out;
-}
-
-button.filter-button.active,
-button.filter-button:hover {
-  color: var(--bs-light);
-  background: var(--primary-color);
-}
-
-/*--------------------------------------------------------------
- 5.2 Pricing page 
-  --------------------------------------------------------------*/
-.plan-post {
-  border: 1px solid var(--primary-color);
-}
-
-span.price-tick {
-  color: var(--primary-color);
-}
-
-.price-option {
-  height: 320px;
-}
 
 
 /*--------------------------------------------------------------
- 5.3 Reviews page
---------------------------------------------------------------*/
-
-.reviews-components {
-  box-shadow: 0px 12px 90px rgba(12, 12, 12, 0.06);
-}
-
-iconify-icon.quote {
-  font-size: 60px;
-  color: var(--primary-color);
-}
-
-.rate {
-  color: var(--primary-color);
-}
-
-/*--------------------------------------------------------------
- 6 extras
+ 5 extras
 --------------------------------------------------------------*/
 .whatsapp-float{
   position:fixed;
