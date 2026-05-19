@@ -376,6 +376,7 @@ h6 {
   --size: 400px;
 }
 
+
 /*--------------------------------------------------------------
 /** 3.CONTENT ELEMENTS
 --------------------------------------------------------------*/
@@ -661,6 +662,39 @@ a.nav-link:hover {
     left: 50%;
     transform: translate(-50%, -50%);
   }
+}
+
+.banner-bg {
+  background-image: url(images/new_bg3.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
+}
+
+@media (max-width: 768px) {
+
+  #banner .banner-bg {
+    background-position: 10% center;
+  }
+
+  #banner .text-center {
+    margin-top: -220px !important;
+  }
+
+  #banner .banner-title {
+    font-size: 2.5rem;
+    padding-top: 0 !important;
+  }
+
+  #banner p {
+    font-size: 1.1rem !important;
+  }
+
+  #banner a {
+    margin-bottom: -520px !important;
+  }
+
 }
 
 /* 4.3 About Section
