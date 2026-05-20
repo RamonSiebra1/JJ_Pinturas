@@ -662,7 +662,7 @@ a.nav-link:hover {
 }
 
 .banner-bg {
-  background-image: url(images/new_bg4.png);
+  background-image: url(images/new_bg5.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -672,7 +672,7 @@ a.nav-link:hover {
 
 
 
-@media (max-width: 728px) {
+@media (max-width: 440px) {
 
   #banner .banner-bg {
     background-position: 2% center;
