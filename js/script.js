@@ -15,10 +15,14 @@
   });
 
   /* Banner Video */
+  
   var video = document.getElementById("myVideo");
-  video.onended = function () {
-    video.play();
+
+  if (video) {
+    video.onended = function () {
+      video.play();
   };
+  }
 
   $(document).ready(function () {
 
@@ -102,30 +106,63 @@
 
 
 document.querySelectorAll('#bdNavbar .nav-link').forEach(link => {
-  link.addEventListener('click', () => {
 
-    const target = link.getAttribute('href');
+  link.addEventListener('click', function (e) {
 
-    // Fecha o menu
-    const offcanvasElement = document.getElementById('bdNavbar');
-    const offcanvas = bootstrap.Offcanvas.getInstance(offcanvasElement);
+    const target = this.getAttribute('href');
 
-    if (offcanvas) {
-      offcanvas.hide();
-    }
-
-    // Faz o scroll após fechar
     if (target.startsWith('#')) {
+
+      e.preventDefault();
+
+      const offcanvasElement = document.getElementById('bdNavbar');
+      const offcanvas = bootstrap.Offcanvas.getInstance(offcanvasElement);
+
+      if (offcanvas) {
+        offcanvas.hide();
+      }
+
       setTimeout(() => {
+
         const section = document.querySelector(target);
 
         if (section) {
           section.scrollIntoView({
-            behavior: 'smooth'
+            behavior: 'smooth',
+            block: 'start'
           });
         }
-      }, 300);
+
+      }, 350);
+
     }
 
   });
+
+});
+
+let lastScrollTop = 0;
+const header = document.getElementById('header');
+
+window.addEventListener('scroll', function () {
+
+    let currentScroll =
+        window.pageYOffset || document.documentElement.scrollTop;
+
+    // Sempre mostrar no topo da página
+    if (currentScroll <= 50) {
+        header.classList.remove('hide-header');
+        return;
+    }
+
+    // Rolando para baixo
+    if (currentScroll > lastScrollTop) {
+        header.classList.add('hide-header');
+    }
+    // Rolando para cima
+    else {
+        header.classList.remove('hide-header');
+    }
+
+    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
 });

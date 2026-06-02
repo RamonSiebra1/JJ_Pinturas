@@ -827,3 +827,42 @@ svg.play-icon {
 html {
   scroll-behavior: smooth;
 }
+
+@media (min-width: 992px) {
+
+  #bdNavbar {
+    position: static !important;
+    visibility: visible !important;
+    transform: none !important;
+    background: transparent !important;
+    width: auto !important;
+    border: 0 !important;
+  }
+
+}
+
+@media (max-width: 991.98px) {
+
+  #bdNavbar {
+    visibility: visible;
+  }
+
+  .navbar-nav {
+    padding-top: 20px;
+  }
+
+}
+
+#header {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+
+  transition: transform 0.3s ease;
+}
+
+#header.hide-header {
+  transform: translateY(-150%);
+}
