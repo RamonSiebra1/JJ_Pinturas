@@ -1,48 +1,73 @@
-(function ($) {
+"use strict";
 
-  "use strict";
+/* =========================
+   BUTTON HOVER EFFECT
+========================= */
+document.querySelectorAll('.button').forEach(button => {
+  button.addEventListener('mousemove', (e) => {
+    const rect = e.target.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
 
-  /* Button hover effect */
-  document.querySelectorAll('.button').forEach(button => {
-    button.onmousemove = function (e) {
-      var rect = e.target.getBoundingClientRect();
-      var x = e.clientX - rect.left;
-      var y = e.clientY - rect.top;
+    e.target.style.setProperty('--x', x + 'px');
+    e.target.style.setProperty('--y', y + 'px');
+  });
+});
 
-      e.target.style.setProperty('--x', x + 'px');
-      e.target.style.setProperty('--y', y + 'px');
-    };
+
+/* =========================
+   VIDEO LOOP
+========================= */
+const video = document.getElementById("myVideo");
+
+if (video) {
+  video.addEventListener("ended", () => {
+    video.play();
+  });
+}
+
+
+/* =========================
+   MODAL VIDEO (Bootstrap 5)
+========================= */
+let videoSrc = "";
+
+document.querySelectorAll('.play-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    videoSrc = btn.getAttribute("data-src");
+  });
+});
+
+const modal = document.getElementById('myModal');
+
+if (modal) {
+  modal.addEventListener('shown.bs.modal', () => {
+    const iframe = document.getElementById("video");
+    if (iframe && videoSrc) {
+      iframe.src = videoSrc + "?autoplay=1&modestbranding=1&showinfo=0";
+    }
   });
 
-  /* Banner Video */
-  
-  var video = document.getElementById("myVideo");
+  modal.addEventListener('hide.bs.modal', () => {
+    const iframe = document.getElementById("video");
+    if (iframe) {
+      iframe.src = videoSrc;
+    }
+  });
+}
 
-  if (video) {
-    video.onended = function () {
-      video.play();
-  };
-  }
 
-  $(document).ready(function () {
+/* =========================
+   SWIPER (já é vanilla)
+========================= */
+window.addEventListener("DOMContentLoaded", () => {
 
-    /* pop up Video */
-    var $videoSrc;
-    $('.play-btn').click(function () {
-      $videoSrc = $(this).data("src");
-    });
+  const thumbSlider = document.querySelector(".product-thumbnail-slider");
+  const largeSlider = document.querySelector(".product-large-slider");
 
-    $('#myModal').on('shown.bs.modal', function (e) {
+  if (thumbSlider && largeSlider && typeof Swiper !== "undefined") {
 
-      $("#video").attr('src', $videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0");
-    })
-
-    $('#myModal').on('hide.bs.modal', function (e) {
-      $("#video").attr('src', $videoSrc);
-    })
-
-    // product single page
-    var thumb_slider = new Swiper(".product-thumbnail-slider", {
+    const thumb = new Swiper(".product-thumbnail-slider", {
       autoplay: true,
       loop: true,
       spaceBetween: 8,
@@ -51,60 +76,62 @@
       watchSlidesProgress: true,
     });
 
-    var large_slider = new Swiper(".product-large-slider", {
+    new Swiper(".product-large-slider", {
       autoplay: true,
       loop: true,
       spaceBetween: 10,
       effect: 'fade',
       thumbs: {
-        swiper: thumb_slider,
+        swiper: thumb,
       },
     });
 
-    window.addEventListener("load", (event) => {
-      //isotope
-      $('.isotope-container').isotope({
-        // options
-        itemSelector: '.item',
-        layoutMode: 'masonry',
-      });
+  }
+});
 
 
+/* =========================
+   ISOTOPE (SEM JQUERY)
+========================= */
+window.addEventListener("load", () => {
 
-      // Initialize Isotope
-      var $container = $('.isotope-container').isotope({
-        // options
-        itemSelector: '.item',
-        layoutMode: 'masonry',
-      });
+  if (typeof Isotope === "undefined") return;
 
-      $(document).ready(function () {
-        //active button
-        $('.filter-button').click(function () {
-          $('.filter-button').removeClass('active');
-          $(this).addClass('active');
-        });
-      });
+  const grid = document.querySelector('.isotope-container');
 
-      // Filter items on button click
-      $('.filter-button').click(function () {
-        var filterValue = $(this).attr('data-filter');
-        if (filterValue === '*') {
-          // Show all items
-          $container.isotope({ filter: '*' });
-        } else {
-          // Show filtered items
-          $container.isotope({ filter: filterValue });
-        }
+  if (!grid) return;
+
+  const iso = new Isotope(grid, {
+    itemSelector: '.item',
+    layoutMode: 'masonry'
+  });
+
+  // filtros
+  document.querySelectorAll('.filter-button').forEach(btn => {
+
+    btn.addEventListener('click', () => {
+
+      document.querySelectorAll('.filter-button')
+        .forEach(b => b.classList.remove('active'));
+
+      btn.classList.add('active');
+
+      const filterValue = btn.getAttribute('data-filter');
+
+      iso.arrange({
+        filter: filterValue === '*' ? '*' : filterValue
       });
 
     });
 
-  }); // End of a document
+  });
 
-})(jQuery);
+});
 
 
+/* =========================
+   OFFCANVAS MENU SMOOTH SCROLL
+========================= */
 document.querySelectorAll('#bdNavbar .nav-link').forEach(link => {
 
   link.addEventListener('click', function (e) {
@@ -112,57 +139,50 @@ document.querySelectorAll('#bdNavbar .nav-link').forEach(link => {
     const target = this.getAttribute('href');
 
     if (target.startsWith('#')) {
-
       e.preventDefault();
 
       const offcanvasElement = document.getElementById('bdNavbar');
       const offcanvas = bootstrap.Offcanvas.getInstance(offcanvasElement);
 
-      if (offcanvas) {
-        offcanvas.hide();
-      }
+      if (offcanvas) offcanvas.hide();
 
       setTimeout(() => {
-
         const section = document.querySelector(target);
-
         if (section) {
           section.scrollIntoView({
             behavior: 'smooth',
             block: 'start'
           });
         }
-
       }, 350);
-
     }
 
   });
 
 });
 
+
+/* =========================
+   HEADER SCROLL HIDE
+========================= */
 let lastScrollTop = 0;
 const header = document.getElementById('header');
 
-window.addEventListener('scroll', function () {
+window.addEventListener('scroll', () => {
 
-    let currentScroll =
-        window.pageYOffset || document.documentElement.scrollTop;
+  const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
 
-    // Sempre mostrar no topo da página
-    if (currentScroll <= 50) {
-        header.classList.remove('hide-header');
-        return;
-    }
+  if (currentScroll <= 50) {
+    header.classList.remove('hide-header');
+    lastScrollTop = currentScroll;
+    return;
+  }
 
-    // Rolando para baixo
-    if (currentScroll > lastScrollTop) {
-        header.classList.add('hide-header');
-    }
-    // Rolando para cima
-    else {
-        header.classList.remove('hide-header');
-    }
+  if (currentScroll > lastScrollTop) {
+    header.classList.add('hide-header');
+  } else {
+    header.classList.remove('hide-header');
+  }
 
-    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+  lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
 });
