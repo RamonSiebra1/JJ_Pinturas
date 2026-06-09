@@ -12,7 +12,7 @@
       <meta property="og:type" content="website">
       <meta property="og:title" content="JJ Pinturas | Pintura Profissional">
       <meta property="og:description" content="Transformamos seu ambiente com as melhores técnicas de pintura.">
-      <meta property="og:image" content="images/og-image.jpg">
+      <meta property="og:image" content="https://www.jjpinturas.com.br/images/og-image.jpg">
       <meta name="google-site-verification" content="GIWGUxWxYA88syu7MSfAPzxKF7jtBMd62mnf_Q1dCOw" />
       <!-- Imagem que aparece no WhatsApp -->
       <!-- Favicon -->
@@ -29,7 +29,7 @@
       <link rel="stylesheet" type="text/css" href="style.css">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <!-- Opcional para navegadores modernos, mas bom manter por legado -->
-      <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=-jKy1CE2jqkCyhoMlCWYi17Bk491ZGGmuIoIKgkeXKUphFLbnrlwHNJR4uHK7eFkmdYP156Gl98lOBY2Ecw8Uwrsq1fdfTk1bYPaD-ikcgTNDbT4q13_jOJQ16morTxGaCaQMMmjq7vmklfVcnUsM_1LBjw4G62UgGtqGWKChdknQIkpdXAHxrIVDhulIfthOtbLkfS7ti2fw9uG-OQIJw" charset="UTF-8"></script><script type="application/ld+json">
+      <script type="application/ld+json">
          {
            "@context": "https://schema.org",
            "@type": "LocalBusiness",
@@ -62,18 +62,23 @@
       </script>
       <script>
          function gtag_report_conversion(url) {
-         var callback = function () {
-            if (typeof(url) != 'undefined') {
-               window.location = url;
-            }
-         };
-         
-         gtag('event', 'conversion', {
-            'send_to': 'AW-18210453709/nKx8CKLp6LscEM3xtetD',
-            'event_callback': callback
-         });
-         
-         return false;
+            var callback = function () {
+               if (typeof(url) != 'undefined') {
+                  window.location.href = url;
+               }
+            };
+
+            gtag('event', 'conversion', {
+               'send_to': 'AW-18210453709/nKx8CKLp6LscEM3xtetD',
+               'event_callback': callback
+            });
+
+            // fallback caso o callback não execute
+            setTimeout(function () {
+               if (url) window.location.href = url;
+            }, 800);
+
+            return false;
          }
       </script>
    </head>
@@ -198,8 +203,12 @@
                            </a>
                         </li>
                         <li class="nav-item px-4">
-                           <a class="nav-link text-primary fw-bold" href= "https://wa.me/5511968800443?text=Olá%2C%20JJ%20Pinturas!%20Estou%20entrando%20em%20contato%20através%20do%20site%20e%20gostaria%20de%20solicitar%20um%20orçamento." target="_blank" aria-label="Falar com a JJ Pinturas no WhatsApp">
-                           Contato
+                           <a class="nav-link text-primary fw-bold"
+                              href="https://wa.me/5511968800443?text=Olá%2C%20JJ%20Pinturas!%20Estou%20entrando%20em%20contato%20através%20do%20site%20e%20gostaria%20de%20solicitar%20um%20orçamento."
+                              target="_blank"
+                              aria-label="Falar com a JJ Pinturas no WhatsApp"
+                              onclick="return gtag_report_conversion('https://wa.me/5511968800443?text=Olá%2C%20JJ%20Pinturas!%20Estou%20entrando%20em%20contato%20através%20do%20site%20e%20gostaria%20de%20solicitar%20um%20orçamento.');">
+                              Contato
                            </a>
                         </li>
                      </ul>
@@ -209,13 +218,17 @@
          </nav>
       </header>
       <main>
-         <a href="https://wa.me/5511968800443?text=Olá%2C%20JJ%20Pinturas!%20Estou%20entrando%20em%20contato%20através%20do%20site%20e%20gostaria%20de%20solicitar%20um%20orçamento."
+            <a href="https://wa.me/5511968800443?text=Olá%2C%20JJ%20Pinturas!%20Estou%20entrando%20em%20contato%20através%20do%20site%20e%20gostaria%20de%20solicitar%20um%20orçamento."
             class="whatsapp-float"
-            target="_blank" aria-label="Falar com a JJ Pinturas no WhatsApp">
-            <svg width="20" height="20">
-               <use xlink:href="#whatsapp-icon"></use>
-            </svg>
-         </a>
+            target="_blank"
+            aria-label="Falar com a JJ Pinturas no WhatsApp"
+            onclick="return gtag_report_conversion('https://wa.me/5511968800443?text=Olá%2C%20JJ%20Pinturas!%20Estou%20entrando%20em%20contato%20através%20do%20site%20e%20gostaria%20de%20solicitar%20um%20orçamento.');">
+
+               <svg width="20" height="20">
+                  <use xlink:href="#whatsapp-icon"></use>
+               </svg>
+
+            </a>
          <!-- Video Background Banner -->
          <!-- <section id="banner">
             <video autoplay muted loop playsinline id="myVideo">
@@ -242,7 +255,10 @@
                      <h2 class="banner-title display-2 fw-bolder fst-italic text-white pt-5">25 Anos <span
                         class="text-primary">de experiência.</span></h2>
                      <p class="text-black fst-italic fs-4">Bem-vindo à JJ Pinturas, Sua solução profissional em pinturas residenciais e comerciais.</p>
-                     <a href="https://wa.me/5511968800443?text=Olá%2C%20JJ%20Pinturas!%20Estou%20entrando%20em%20contato%20através%20do%20site%20e%20gostaria%20de%20solicitar%20um%20orçamento." class="button btn mt-3" target="_blank">
+                    <a href="https://wa.me/5511968800443?text=Olá%2C%20JJ%20Pinturas!%20Estou%20entrando%20em%20contato%20através%20do%20site%20e%20gostaria%20de%20solicitar%20um%20orçamento."
+                     class="button btn mt-3"
+                     target="_blank"
+                     onclick="return gtag_report_conversion('https://wa.me/5511968800443?text=Olá%2C%20JJ%20Pinturas!%20Estou%20entrando%20em%20contato%20através%20do%20site%20e%20gostaria%20de%20solicitar%20um%20orçamento.');">
                      <span><b>(11) 96880-0443</b></span>
                      </a>
                   </div>
@@ -301,7 +317,10 @@
                <div class="offset-md-2 col-md-8 text-center">
                   <h3 class="display-5 fw-bold mb-4">Conheça a <span class="text-primary">JJ Pinturas</span></h3>
                   <p>Bem-vindo à JJ Pinturas, sua parceira de confiança em soluções de pintura de alta qualidade. Com anos de experiência no setor, estamos comprometidos em oferecer serviços que superem suas expectativas. Atendemos toda a cidade de São Paulo e a região do Grande ABC. </p>
-                  <a href="https://wa.me/5511968800443?text=Olá%2C%20JJ%20Pinturas!%20Estou%20entrando%20em%20contato%20através%20do%20site%20e%20gostaria%20de%20solicitar%20um%20orçamento." class="button btn mt-3" target="_blank" class="button btn mt-3">
+                  <a href="https://wa.me/5511968800443?text=Olá%2C%20JJ%20Pinturas!%20Estou%20entrando%20em%20contato%20através%20do%20site%20e%20gostaria%20de%20solicitar%20um%20orçamento."
+                  class="button btn mt-3"
+                  target="_blank"
+                  onclick="return gtag_report_conversion('https://wa.me/5511968800443?text=Olá%2C%20JJ%20Pinturas!%20Estou%20entrando%20em%20contato%20através%20do%20site%20e%20gostaria%20de%20solicitar%20um%20orçamento.');">
                   <span>Entre em contato</span>
                   </a>
                </div>
@@ -410,8 +429,10 @@
                <!-- Botões -->
                <div class="text-center mt-5">
                   <a href="https://wa.me/5511968800443?text=Olá%2C%20JJ%20Pinturas!%20Estou%20entrando%20em%20contato%20através%20do%20site%20e%20gostaria%20de%20solicitar%20um%20orçamento."
-                     class="btn btn-outline-dark px-4 py-3 rounded-pill ms-2" target="_blank">
-                  Fale conosco
+                     class="btn btn-outline-dark px-4 py-3 rounded-pill ms-2"
+                     target="_blank"
+                     onclick="return gtag_report_conversion('https://wa.me/5511968800443?text=Olá%2C%20JJ%20Pinturas!%20Estou%20entrando%20em%20contato%20através%20do%20site%20e%20gostaria%20de%20solicitar%20um%20orçamento.');">
+                     Fale conosco
                   </a>
                </div>
             </div>
@@ -423,8 +444,11 @@
                      <h3 class="display-5 fw-bold mb-4">Nossa garantia <span class="text-primary">JJ Pinturas</span></h3>
                      <p>Na JJ Pinturas, cada projeto é realizado com compromisso, qualidade e atenção aos detalhes. Por isso, oferecemos garantia em nossos serviços, assegurando acabamento profissional, durabilidade e a confiança que você merece. Mais do que pintar ambientes, entregamos tranquilidade e satisfação do início ao fim.
                      </p>
-                     <a href="https://wa.me/5511968800443?text=Olá%2C%20JJ%20Pinturas!%20Estou%20entrando%20em%20contato%20através%20do%20site%20e%20gostaria%20de%20solicitar%20um%20orçamento." class="button btn mt-4" target="_blank">
-                     <span>Faça o seu orçamento</span>
+                     <a href="https://wa.me/5511968800443?text=Olá%2C%20JJ%20Pinturas!%20Estou%20entrando%20em%20contato%20através%20do%20site%20e%20gostaria%20de%20solicitar%20um%20orçamento."
+                        class="button btn mt-4"
+                        target="_blank"
+                        onclick="return gtag_report_conversion('https://wa.me/5511968800443?text=Olá%2C%20JJ%20Pinturas!%20Estou%20entrando%20em%20contato%20através%20do%20site%20e%20gostaria%20de%20solicitar%20um%20orçamento.');">
+                        <span>Faça o seu orçamento</span>
                      </a>
                   </div>
                   <div class="col-lg-6 mt-5 mt-lg-0">
@@ -690,8 +714,11 @@
                      <h3 class="display-5 fw-bold m-lg-0">Pronto para realizar <span class="text-primary">o seu orçamento?</span></h3>
                   </div>
                   <div class="offset-lg-2 col-lg-4">
-                     <a href="https://wa.me/5511968800443?text=Olá%2C%20JJ%20Pinturas!%20Estou%20entrando%20em%20contato%20através%20do%20site%20e%20gostaria%20de%20solicitar%20um%20orçamento." class="button btn" target="_blank">
-                     <span>Entre em contato</span>
+                    <a href="https://wa.me/5511968800443?text=Olá%2C%20JJ%20Pinturas!%20Estou%20entrando%20em%20contato%20através%20do%20site%20e%20gostaria%20de%20solicitar%20um%20orçamento."
+                        class="button btn"
+                        target="_blank"
+                        onclick="return gtag_report_conversion('https://wa.me/5511968800443?text=Olá%2C%20JJ%20Pinturas!%20Estou%20entrando%20em%20contato%20através%20do%20site%20e%20gostaria%20de%20solicitar%20um%20orçamento.');">
+                        <span>Entre em contato</span>
                      </a>
                   </div>
                </div>
@@ -734,7 +761,13 @@
                      </svg>
                      <div class="contact-info-text ms-3">
                         <h5 class="mb-0">Orçamento Grátis</h5>
-                        <p class="mb-0 text-decoration-underline"><a href="https://wa.me/5511968800443?text=Olá%2C%20JJ%20Pinturas!%20Estou%20entrando%20em%20contato%20através%20do%20site%20e%20gostaria%20de%20solicitar%20um%20orçamento." target="_blank">WhatsApp</a></p>
+                        <p class="mb-0 text-decoration-underline">
+                           <a href="https://wa.me/5511968800443?text=Olá%2C%20JJ%20Pinturas!%20Estou%20entrando%20em%20contato%20através%20do%20site%20e%20gostaria%20de%20solicitar%20um%20orçamento."
+                              target="_blank"
+                              onclick="return gtag_report_conversion('https://wa.me/5511968800443?text=Olá%2C%20JJ%20Pinturas!%20Estou%20entrando%20em%20contato%20através%20do%20site%20e%20gostaria%20de%20solicitar%20um%20orçamento.');">
+                              WhatsApp
+                           </a>
+                        </p>
                      </div>
                   </div>
                </div>
@@ -786,9 +819,8 @@
       <!-- Scripts ================================================== -->
       <script src="js/jquery-1.11.0.min.js"></script>
       <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
-      <script type="text/javascript" src="js/plugins.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+      
+      
       <script type="text/javascript" src="js/script.js"></script>
-      <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
    </body>
 </html>
